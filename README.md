@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Plumbing and Drain Services Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Combined repository for the frontend and backend of a Plumbing and Drain Services marketplace platform.
 
-## Available Scripts
+## Repository Structure
 
-In the project directory, you can run:
+- [src](src): React frontend source
+- [public](public): frontend static assets
+- [backend](backend): Django REST backend source
 
-### `npm start`
+## Frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The frontend is a React application using React Bootstrap and Bootswatch.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Main Features
 
-### `npm test`
+- Services list and detail pages
+- User sign in and sign up
+- Seller application flow
+- Admin user management
+- Seller dashboard
+- User profile and orders
+- Subscription screens
+- PayPal transaction pages
+- AI chatbot interface
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend Setup
 
-### `npm run build`
+1. Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Create a local environment file from [.env.sample](.env.sample)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start frontend
 
-### `npm run eject`
+	npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Run tests
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	npm test -- --watchAll=false
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Build production bundle
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+	npm run build
 
-## Learn More
+## Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The backend is a Django REST API with JWT authentication.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend Apps
 
-### Code Splitting
+- `users`: authentication, JWT, custom user model, profile, admin users
+- `applications`: seller application lifecycle
+- `services`: service CRUD and local image uploads
+- `orders`: PayPal transaction logging and order history
+- `subscription`: tiers and active subscription tracking
+- `chat`: AI chatbot endpoint with subscription-based usage limits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Backend Setup
 
-### Analyzing the Bundle Size
+1. Go to backend folder
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	cd backend
 
-### Making a Progressive Web App
+2. Create a local environment file from [backend/.env.sample](backend/.env.sample)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Install backend dependencies
 
-### Advanced Configuration
+	.venv\Scripts\python.exe -m pip install -r requirements.txt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Run migrations
 
-### Deployment
+	.venv\Scripts\python.exe manage.py migrate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+5. Start backend server
 
-### `npm run build` fails to minify
+	.venv\Scripts\python.exe manage.py runserver
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Backend Base Routes
+
+- `/api/v1/users/`
+- `/api/v1/applications/`
+- `/api/v1/services/`
+- `/api/v1/orders/`
+- `/api/v1/subscription/`
+- `/api/v1/chat/`
+
+## Environment Files
+
+Sample files only are included in this repository:
+
+- [.env.sample](.env.sample)
+- [backend/.env.sample](backend/.env.sample)
+
+Do not commit real `.env` files.
+
+## Repository Notes
+
+- Use one combined repository for frontend and backend
+- Keep only `main` or `master` branch
+- Use concise commit messages
